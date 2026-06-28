@@ -10,10 +10,10 @@ brew trust omnideck-dev/omnideck
 brew install omnideck
 ```
 
-Or in one step:
+Or as a single command:
 
 ```sh
-brew install omnideck-dev/omnideck/omnideck
+brew tap omnideck-dev/omnideck && brew trust omnideck-dev/omnideck && brew install omnideck
 ```
 
 > **Note:** The `brew trust` step is required by Homebrew's third-party tap security policy. You only need to run it once.
