@@ -1,0 +1,27 @@
+name: Formula Audit
+
+on:
+  push:
+    paths:
+      - "Formula/**"
+  pull_request:
+    paths:
+      - "Formula/**"
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Audit formula
+        run: brew audit --strict --online Formula/omnideck.rb
+
+      - name: Install formula
+        run: brew install --formula Formula/omnideck.rb
+
+      - name: Run formula tests
+        run: brew test Formula/omnideck.rb
